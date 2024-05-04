@@ -15,3 +15,6 @@ _twp.zip
 
 # Ignore .DS_Store files from macOS:
 .DS_Store
+
+#Ignore .idea files from PhpStorm
+.idea
