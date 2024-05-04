@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( '_TWP_VERSION' ) ) {
-	define( '_TWP_VERSION', '0.1.0' );
+	define( '_TWP_VERSION', '1.0.0' );
 }
 if ( ! defined( '_TWP_AUTHOR' ) ) {
 	define( '_TWP_AUTHOR', 'TAGTWP' );
