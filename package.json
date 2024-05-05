@@ -53,5 +53,9 @@
 		"zip": "node node_scripts/zip.js _twp",
 		"bundle": "run-s production zip"
 	},
-	"prettier": "@wordpress/prettier-config"
+	"prettier": "@wordpress/prettier-config",
+	"dependencies": {
+		"preline": "^2.1.0",
+		"jquery": "^3.7.1"
+	}
 }
