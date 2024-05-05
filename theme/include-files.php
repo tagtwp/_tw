@@ -4,11 +4,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$twp_file_paths = array(
+$_twp_file_paths = array(
 	'backend/class-tgm-plugin-activation',
+	'backend/install-plugins',
+	'backend/actions',
+
+	'includes/sidebars',
 );
 
-foreach ( $twp_file_paths as $file_path ) {
+foreach ( $_twp_file_paths as $file_path ) {
 	$file = get_theme_file_path( $file_path . '.php' );
 	if ( file_exists( $file ) ) {
 		include_once $file;
