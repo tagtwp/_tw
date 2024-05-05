@@ -2,6 +2,7 @@
 const includePreflight = 'editor' === process.env._TWP_TARGET ? false : true;
 
 module.exports = {
+	darkMode: 'class',
 	presets: [
 		// Manage Tailwind Typography's configuration in a separate file.
 		require('./tailwind-typography.config.js'),
@@ -9,6 +10,7 @@ module.exports = {
 	content: [
 		// Ensure changes to PHP files and `theme.json` trigger a rebuild.
 		'./theme/**/*.php',
+		'node_modules/preline/dist/*.js',
 	],
 	theme: {
 		// Extend the default Tailwind theme.
@@ -29,5 +31,7 @@ module.exports = {
 		// require('@tailwindcss/forms'),
 		// require('@tailwindcss/aspect-ratio'),
 		// require('@tailwindcss/container-queries'),
+
+		require('preline/plugin'),
 	],
 };
