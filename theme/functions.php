@@ -14,10 +14,10 @@ if ( ! defined( '_TWP_AUTHOR' ) ) {
 	define( '_TWP_AUTHOR', 'TAGTWP' );
 }
 if ( ! defined( '_TWP_NAME' ) ) {
-	define( '_TWP_NAME', 'twp' );
+	define( '_TWP_NAME', '_TWP' );
 }
-if ( ! defined( 'TWP_OPT' ) ) {
-	define( 'TWP_OPT', 'twp_options' );
+if ( ! defined( '_TWP_PREFIX' ) ) {
+	define( '_TWP_PREFIX', '_twp' );
 }
 
 /**
@@ -60,6 +60,11 @@ if ( ! function_exists( '_twp_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function _twp_setup() {
+
+		if ( ! isset( $GLOBALS['content_width'] ) ) {
+			$GLOBALS['content_width'] = 1140;
+		}
+
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -89,8 +94,8 @@ if ( ! function_exists( '_twp_setup' ) ) :
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus(
 			array(
-				'menu-1' => __( 'Primary', '_twp' ),
-				'menu-2' => __( 'Footer Menu', '_twp' ),
+				_TWP_PREFIX . '_main' => __( 'Main Menu', '_twp' ),
+				_TWP_PREFIX . '_mobile' => __( 'Mobile Menu', '_twp' ),
 			)
 		);
 
@@ -111,6 +116,8 @@ if ( ! function_exists( '_twp_setup' ) ) :
 			)
 		);
 
+		add_theme_support( 'post-formats', [ 'gallery', 'video', 'audio' ] );
+
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -129,26 +136,6 @@ if ( ! function_exists( '_twp_setup' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', '_twp_setup' );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function _twp_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => __( 'Footer', '_twp' ),
-			'id'            => 'sidebar-1',
-			'description'   => __( 'Add widgets here to appear in your footer.', '_twp' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', '_twp_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -198,9 +185,9 @@ add_filter( 'tiny_mce_before_init', '_twp_tinymce_add_class' );
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/includes/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/includes/template-functions.php';
