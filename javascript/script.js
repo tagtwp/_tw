@@ -8,3 +8,10 @@
  * For esbuild documentation, please see:
  * https://esbuild.github.io/
  */
+
+// jquery
+import 'jquery'
+
+// preline
+import 'preline';
+
